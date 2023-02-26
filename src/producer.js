@@ -318,7 +318,8 @@ Producer.prototype.handleIncoming = function( eventName, data ){
 		this._shouldPause = true;
 	}
 
-	this._rabbitChannel.sendToQueue( this.config.rabbit.queueName, new Buffer( data ), {"persistent":true} );
+// 	this._rabbitChannel.sendToQueue( this.config.rabbit.queueName, new Buffer( data ), {"persistent":true} );
+	this._rabbitChannel.publish( "persist", this.config.rabbit.queueName, new Buffer( data ), {"persistent":true} );
 	this.emit( producerEvents.handledData( ) );
 };
 
