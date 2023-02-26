@@ -13,7 +13,7 @@ const Validations = function( ){
 			).unique().default( [ ] ),
 			rabbit: Joi.object( ).keys( {
 				host: Joi.alternatives( ).try(
-					Joi.string( ).hostname()
+					Joi.string( )//.hostname()
 				).required( ),
 				user: Joi.string( ).default( "guest" ),
 				pass: Joi.string( ).default( "guest" ),
